@@ -259,11 +259,23 @@ await db.insert(users).values(result.data);
 
 ### Vercel KV (Redis) Pattern
 
+> ⚠️ **DSGVO**: Niemals Klartext-Email als Key! Immer hashen.
+
 ```ts
 import { kv } from '@vercel/kv';
+import crypto from 'crypto';
+
+// Hash email for privacy (DSGVO-konform)
+function hashEmail(email: string): string {
+  return crypto
+    .createHash('sha256')
+    .update(email.toLowerCase() + process.env.HASH_SALT)
+    .digest('hex')
+    .slice(0, 32); // 32 chars = 128 bit entropy
+}
 
 async function checkRateLimit(email: string): Promise<boolean> {
-  const key = `rate:${email}`;
+  const key = `rate:${hashEmail(email)}`; // ✅ Hashed, nicht Klartext!
   const limit = 5; // Max 5 requests
   const window = 3600; // Per hour
 

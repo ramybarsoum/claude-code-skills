@@ -193,8 +193,12 @@ jobs:
 - ✅ Lokale npm packages
 
 **CSP Header Configuration**:
+
+> ⚠️ **SECURITY**: Verwende NIEMALS `unsafe-inline` oder `unsafe-eval` in Production!
+> Nutze stattdessen Nonces oder Hashes für Inline-Scripts.
+
 ```json
-// Cloud Run
+// Cloud Run - PRODUCTION (sicher)
 {
   "regions": ["europe-west3"],
   "headers": [
@@ -203,7 +207,7 @@ jobs:
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.run.app https://*.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+          "value": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.run.app https://*.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
         },
         {
           "key": "X-Content-Type-Options",
@@ -225,10 +229,22 @@ jobs:
 
 **Explanation**:
 - `default-src 'self'` → Nur eigene Domain (kein CDN!)
-- `script-src 'self' 'unsafe-inline' 'unsafe-eval'` → Vite dev mode (remove unsafe-* in production)
+- `script-src 'self'` → Keine unsafe-* in Production! Für Dev: Vite Config anpassen
 - `connect-src ... https://*.google.com` → Google OAuth + Gemini API (EU-hosted)
 - `frame-ancestors 'none'` → Prevent clickjacking
 - `X-Frame-Options: DENY` → Double protection gegen iframes
+
+**Für Vite Dev-Mode** (nur lokal, NICHT in Production):
+```ts
+// vite.config.ts - nur für lokale Entwicklung
+export default defineConfig({
+  server: {
+    headers: {
+      'Content-Security-Policy': "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
+    }
+  }
+})
+```
 
 **Verification Commands**:
 ```bash
@@ -525,6 +541,9 @@ interface ForbiddenData {
 ```
 
 **Implementation mit Hash**:
+
+> ⚠️ **SECURITY**: Mindestens 32 Zeichen (128 bit) für ausreichende Kollisionsresistenz!
+
 ```typescript
 // utils/auditLog.ts
 import crypto from 'crypto';
@@ -532,9 +551,9 @@ import crypto from 'crypto';
 function hashUserId(email: string): string {
   return crypto
     .createHash('sha256')
-    .update(email + process.env.HASH_SALT)
+    .update(email.toLowerCase() + process.env.HASH_SALT)
     .digest('hex')
-    .slice(0, 16); // First 16 chars
+    .slice(0, 32); // 32 chars = 128 bit (Kollisionsresistent)
 }
 
 export async function logAnalysis(email: string, metadata: Omit<AuditEvent, 'userId' | 'timestamp'>) {
