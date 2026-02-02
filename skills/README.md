@@ -219,7 +219,7 @@ skill-name/
 3. Claude Code neu starten
 
 **Skill-Fehler:**
-1. Logs pruefen: `C:\Users\Anwender\.claude\debug\`
+1. Logs pruefen: `~/.claude/debug/`
 2. Skill-Verzeichnis-Permissions pruefen
 
 ---

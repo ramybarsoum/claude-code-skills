@@ -111,7 +111,7 @@ set -e
 
 echo "🔍 Verifying DSGVO compliance (Frankfurt region)..."
 
-DEPLOYMENT_URL="https://app.dresdenaiinsights.com"
+DEPLOYMENT_URL="https://app.your-domain.com"
 INSPECT_OUTPUT=$(gcloud run services describe fabrikiq-backend --region europe-west3 "$DEPLOYMENT_URL" --wait 2>&1)
 
 # Check if ALL lambda functions are in europe-west3
@@ -233,13 +233,13 @@ jobs:
 **Verification Commands**:
 ```bash
 # 1. Check CSP headers in production
-curl -I https://app.dresdenaiinsights.com | grep -i content-security-policy
+curl -I https://app.your-domain.com | grep -i content-security-policy
 
 # Expected output:
 # content-security-policy: default-src 'self'; ...
 
 # 2. Verify no external CDN requests
-curl -s https://app.dresdenaiinsights.com | grep -i "cdn\."
+curl -s https://app.your-domain.com | grep -i "cdn\."
 
 # Expected: NO output (keine CDN-Links)
 
@@ -434,7 +434,7 @@ export function runStartupChecks() {
   <li>Widerspruch gegen Verarbeitung (Art. 21)</li>
 </ul>
 
-<p><strong>Kontakt</strong>: <a href="mailto:privacy@dresdenaiinsights.com">privacy@dresdenaiinsights.com</a></p>
+<p><strong>Kontakt</strong>: <a href="mailto:privacy@your-domain.com">privacy@your-domain.com</a></p>
 ```
 
 **User-Consent Banner** (NICHT Cookie-Banner!):
@@ -600,7 +600,7 @@ try {
 #!/bin/bash
 set -e
 
-PROD_URL="https://app.dresdenaiinsights.com"
+PROD_URL="https://app.your-domain.com"
 
 echo "🧪 Running DSGVO Smoke Tests..."
 echo ""

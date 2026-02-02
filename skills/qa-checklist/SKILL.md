@@ -127,7 +127,7 @@ echo $NODE_ENV
 
 ```bash
 # Verify production deployment
-curl -s -o /dev/null -w "%{http_code}" https://dresdenaiinsights.com/health
+curl -s -o /dev/null -w "%{http_code}" https://your-domain.com/health
 ```
 
 **Expected:** 200 OK

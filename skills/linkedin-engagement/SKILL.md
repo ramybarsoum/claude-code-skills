@@ -7,7 +7,7 @@ description: LinkedIn Content-Erstellung, Engagement und Monitoring für B2B/Man
 
 ## Konfiguration
 
-**LinkedIn-Profil:** [Your Name] (echtes Profil)
+**LinkedIn-Profil:** Lara Knuth (echtes Profil)
 **Unternehmen:** fabrikIQ / Dresden AI Insights
 **Fokus:** MES, OEE, Fertigungsdatenanalyse, KMU-Digitalisierung
 
@@ -219,13 +219,26 @@ description: LinkedIn Content-Erstellung, Engagement und Monitoring für B2B/Man
 
 **Integration mit gemini-image-gen Skill:**
 ```python
-# Verwendet GOOGLE_AI_API_KEY aus Environment
+# Verwendet GEMINI_API_KEY aus .env.local
 from google import genai
-client = genai.Client(api_key=os.environ.get("GOOGLE_AI_API_KEY"))
+from google.genai import types
+from dotenv import load_dotenv
+load_dotenv('.env.local')
 
-# Modelle:
+client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
+
+# Modelle (funktionieren in DE!):
 # - gemini-2.5-flash-image: Schnell, gut für einfache Grafiken
-# - gemini-3-pro-image-preview: Höhere Qualität, komplexere Szenen
+# - gemini-3-pro-image-preview: Höhere Qualität, komplexere Szenen (EMPFOHLEN)
+# - imagen-4.0-generate-001: Fotorealistische Bilder
+
+response = client.models.generate_content(
+    model='gemini-3-pro-image-preview',  # FUNKTIONIERT IN DEUTSCHLAND
+    contents=[prompt],
+    config=types.GenerateContentConfig(
+        response_modalities=['IMAGE']
+    )
+)
 ```
 
 **LinkedIn Bild-Formate:**
@@ -749,10 +762,10 @@ Blue and white, professional B2B manufacturing.
 
 ---
 
-## Persona: [Your Name]
+## Persona: Lara Knuth
 
 **LinkedIn-Profil:**
-- Name: [Your Name] (echt)
+- Name: Lara Knuth (echt)
 - Position: Gründerin fabrikIQ / Dresden AI Insights
 - Standort: Dresden, Sachsen
 - Hintergrund: MES-Expertin, COO/CEO Erfahrung in KMU
@@ -771,13 +784,176 @@ Blue and white, professional B2B manufacturing.
 
 ---
 
+## Technische Implementierung (Web-Zugriff)
+
+### Erfahrungen aus Reddit-Skill (übertragbar)
+
+**Problem:** WebFetch wird von vielen Plattformen blockiert
+**Lösung:** Browser-Automatisierung oder curl mit User-Agent
+
+### LinkedIn-spezifische Herausforderungen
+
+| Aspekt | Reddit | LinkedIn |
+|--------|--------|----------|
+| Öffentliche API | ✅ `/new.json` | ❌ Keine |
+| Scraping erlaubt | ⚠️ Rate-Limited | ❌ Streng verboten (ToS) |
+| Auth erforderlich | Nur für Posts | Für fast alles |
+| Bot-Detection | Moderat | Aggressiv |
+
+### Empfohlene Methoden (Priorität)
+
+#### 1. Claude-in-Chrome MCP (BESTE OPTION)
+
+**Vorteile:**
+- Nutzt echte Browser-Session (eingeloggt)
+- Kein Scraping-Verdacht
+- Voller Zugriff auf Feed, Kommentare, Analytics
+
+**Schritt-für-Schritt Workflows:**
+
+##### /linkedin-scan Workflow
+```
+1. tabs_context_mcp (createIfEmpty: true)
+   → Prüft ob Tab-Gruppe existiert
+
+2. tabs_create_mcp
+   → Neuen Tab erstellen
+
+3. navigate (url: "https://www.linkedin.com/feed/hashtag/manufacturing")
+   → Hashtag-Feed öffnen
+
+4. browser_wait_for (time: 3)
+   → Warten bis Feed geladen
+
+5. read_page (tabId: X, filter: "all")
+   → Accessibility-Tree extrahieren
+
+6. find (query: "post with reactions", tabId: X)
+   → Posts mit Engagement finden
+
+7. Analyse und Kommentar-Empfehlungen generieren
+```
+
+##### /linkedin-comment Workflow
+```
+1. navigate (url: "[POST-URL]")
+   → Direkt zum Post navigieren
+
+2. read_page (tabId: X)
+   → Post-Inhalt und Autor extrahieren
+
+3. get_page_text (tabId: X)
+   → Volltext für Kontext
+
+4. Kommentar generieren (siehe Templates)
+
+5. find (query: "comment input field", tabId: X)
+   → Kommentarfeld finden (für manuelle Eingabe)
+```
+
+##### /linkedin-monitor Workflow
+```
+1. navigate (url: "https://www.linkedin.com/in/lara-knuth/recent-activity/")
+   → Eigene Aktivitäten öffnen
+
+2. read_page → Posts mit Kommentar-Counts finden
+
+3. Für jeden Post mit neuen Kommentaren:
+   - navigate → Post öffnen
+   - read_page → Kommentare extrahieren
+   - Antwort-Vorschläge generieren
+```
+
+##### /linkedin-analytics Workflow
+```
+1. navigate (url: "https://www.linkedin.com/analytics/")
+   → Analytics-Dashboard öffnen
+
+2. computer (action: "screenshot", tabId: X)
+   → Screenshot für visuelle Analyse
+
+3. read_page → Zahlen extrahieren
+
+4. Performance-Report generieren
+```
+
+#### 2. Manuelles Copy-Paste (FALLBACK)
+Wenn Claude-in-Chrome nicht verfügbar:
+```
+User: Hier ist der Post-Inhalt: [PASTE]
+Claude: Analysiert und generiert Kommentar
+```
+
+#### 3. curl mit User-Agent (LIMITIERT)
+Funktioniert NUR für öffentliche Artikel (nicht Feed):
+```bash
+# Öffentlicher LinkedIn-Artikel (ohne Login sichtbar)
+curl -s -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
+  "https://www.linkedin.com/pulse/[article-slug]" | head -1000
+```
+
+**Limitierung:** Feed-Posts, Kommentare, Analytics = NICHT zugänglich ohne Login
+
+#### 4. LinkedIn API (falls OAuth konfiguriert)
+```bash
+# Prüfen ob LinkedIn-Token vorhanden
+echo $LINKEDIN_ACCESS_TOKEN
+
+# API-Aufruf (nur mit gültiger OAuth-App)
+curl -H "Authorization: Bearer $LINKEDIN_ACCESS_TOKEN" \
+  "https://api.linkedin.com/v2/me"
+```
+
+**Status:** Aktuell NICHT konfiguriert. LinkedIn API erfordert:
+- LinkedIn Developer App
+- OAuth 2.0 Flow
+- Genehmigung für Marketing API (für Posts)
+
+### Implementierung pro Command
+
+| Command | Beste Methode | Fallback |
+|---------|--------------|----------|
+| `/linkedin-scan` | Claude-in-Chrome | Manuell (User zeigt Feed) |
+| `/linkedin-comment [url]` | Claude-in-Chrome → URL öffnen | User pastet Post-Text |
+| `/linkedin-monitor` | Claude-in-Chrome → eigene Posts | User berichtet Kommentare |
+| `/linkedin-analytics` | Claude-in-Chrome → Analytics-Tab | User teilt Screenshot |
+
+### Code-Snippets für Claude-in-Chrome
+
+**Post-Inhalt extrahieren:**
+```javascript
+// Via mcp__claude-in-chrome__javascript_tool
+const posts = document.querySelectorAll('[data-urn*="activity"]');
+const postData = Array.from(posts).map(p => ({
+  author: p.querySelector('.update-components-actor__name')?.innerText,
+  text: p.querySelector('.feed-shared-update-v2__description')?.innerText,
+  reactions: p.querySelector('.social-details-social-counts__reactions-count')?.innerText
+}));
+return JSON.stringify(postData, null, 2);
+```
+
+**Hashtag-Feed laden:**
+```javascript
+// mcp__claude-in-chrome__navigate
+url: "https://www.linkedin.com/feed/hashtag/manufacturing"
+```
+
+### Wichtig: Keine Automatisierung von Posts/Kommentaren!
+
+Der Skill generiert nur **Vorschläge**. Das tatsächliche Posten/Kommentieren:
+- Muss manuell durch User erfolgen
+- LinkedIn ToS verbieten Bot-Posts
+- Account-Sperrung bei Automatisierung
+
+---
+
 ## Qualitäts-Checkliste vor Posting
 
 ### Post/Artikel:
 - [ ] Keine AI-Slop Phrasen?
 - [ ] Hook in ersten 2 Zeilen?
 - [ ] Satzlängen variieren?
-- [ ] Authentische Stimme ([Your Name])?
+- [ ] Authentische Stimme (Lara)?
 - [ ] Regional passend (US/EU/Asia)?
 - [ ] Hashtags am Ende (max 5)?
 - [ ] Bild falls sinnvoll?

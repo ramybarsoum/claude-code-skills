@@ -144,9 +144,9 @@ Read framework → Score 5 criteria → Apply decision matrix → Keep/Remove/Ev
 - `doc-generator/` - Documentation generation
 
 **Configuration Files:**
-- `C:\Users\Anwender\.claude\settings.json`
-- `C:\Users\Anwender\AppData\Roaming\Claude\claude_desktop_config.json`
-- `C:\Projekte\AGENT_MEMORY.md` (user's custom memory file)
+- `~/.claude/settings.json`
+- `~/.config/claude/claude_desktop_config.json`
+- `~/projects/AGENT_MEMORY.md` (user's custom memory file)
 
 ---
 
