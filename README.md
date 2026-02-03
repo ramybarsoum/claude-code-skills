@@ -17,7 +17,7 @@ If someone with my background can create production-tested skills, hooks, and a 
 
 ---
 
-A collection of production-tested Claude Code skills for B2B SaaS development, focusing on TypeScript, quality gates, and multi-LLM workflows. These skills were developed while building [fabrikIQ](https://app.fabrikiq.com), a GDPR-compliant manufacturing analytics platform.
+A collection of production-tested Claude Code skills for B2B SaaS development, focusing on TypeScript, quality gates, and multi-LLM workflows.
 
 ## Quick Start
 
