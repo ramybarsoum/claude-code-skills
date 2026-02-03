@@ -1,7 +1,6 @@
 # Claude Code Skills Collection
 
 **Author:** Svenja-dev ([@Svenja-dev](https://github.com/Svenja-dev))
-**Website:** [fabrikIQ.com](https://www.fabrikiq.com) - AI-powered Manufacturing Analytics
 **License:** MIT
 **Last Updated:** December 2025
 
