@@ -72,7 +72,7 @@ cp commands/*.md ~/.claude/commands/
 
 Found these useful? Open an issue or PR!
 
-**Contact:** Reddit [@Svenja-dev](https://github.com/Svenja-dev) | Website: [www.fabrikiq.com](https://www.fabrikiq.com)
+**Contact:** Reddit [@Svenja-dev](https://github.com/Svenja-dev)
 
 ## License
 
