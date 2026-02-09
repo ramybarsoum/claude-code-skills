@@ -37,6 +37,10 @@
           {
             "type": "command",
             "command": "npx tsx ~/.claude/hooks/post-edit-tsc-check.ts"
+          },
+          {
+            "type": "command",
+            "command": "if echo $CLAUDE_FILE | grep -q '\\.py$'; then python -m py_compile $CLAUDE_FILE 2>&1; fi"
           }
         ]
       }
