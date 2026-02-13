@@ -41,6 +41,7 @@ cp commands/supervisor.md ~/.claude/commands/
 
 | Command | Description |
 |---------|-------------|
+| `/review` | Unified Multi-Purpose Review via OpenRouter (code/security/plan, 20+ models, paid+free) |
 | `/harsh-review` | Harsh Reviewer (Self-Critique) |
 | `/chain-verify` | Chain of Verification |
 | `/postmortem` | Post-Mortem / Incident Report |

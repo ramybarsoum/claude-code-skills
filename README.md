@@ -2,7 +2,7 @@
 
 **Author:** Svenja-dev ([@Svenja-dev](https://github.com/Svenja-dev))
 **License:** MIT
-**Last Updated:** December 2025
+**Last Updated:** February 2026
 
 ---
 
@@ -49,6 +49,7 @@ Copy each skill's content into `~/.claude/skills/<skill-name>/SKILL.md`
 See [commands/README.md](commands/README.md) for 19 slash commands including:
 
 - `/think` - Ultimate thinking mode
+- `/review` - Multi-Purpose Review via OpenRouter (code/security/plan)
 - `/supervisor` - Multi-Agent QA mode
 - `/qa` - Run Quality Gates
 - `/strategy-fan` - Generate 4 strategies
@@ -66,6 +67,10 @@ npm install -g tsx
 
 # Commands
 cp commands/*.md ~/.claude/commands/
+
+# Scripts (needed by /review command)
+cp scripts/codex_review.py your-project/scripts/
+pip install httpx
 ```
 
 ## Contributing
