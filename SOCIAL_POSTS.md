@@ -29,7 +29,6 @@ mkdir -p ~/.claude/skills/code-quality-gate
 # copy SKILL.md content
 ```
 
-These are battle-tested from building [fabrikIQ](https://www.fabrikiq.com) (manufacturing analytics). Not perfect, but they work.
 
 What skills do you use daily? Looking for inspiration to add more.
 
