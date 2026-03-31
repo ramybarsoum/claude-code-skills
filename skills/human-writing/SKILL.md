@@ -1,423 +1,561 @@
-# Human Writing Skill
-
-name: human-writing
-description: Plattformunabhaengige Schreibregeln fuer authentische, menschliche Texte. Verhindert KI-typische Sprachmuster, Phrasen und Strukturen. Gilt fuer ALLE Textarten (Blog, Artikel, Social Media, Docs, E-Mails, wissenschaftliche Texte). Aktivieren mit /human-writing oder automatisch bei Content-Erstellung.
-version: 1.0.0
-triggers:
-  - /human-writing
-  - Content-Erstellung jeder Art
-  - Texte schreiben, ueberarbeiten, korrigieren
-
+---
+name: human-writing-style
+description: >
+  Vermeidet KI-typische Schreibmuster und erzeugt hochwertige Sach- und Fachtexte, die gelesen, gespeichert und erinnert werden.
+  Trigger bei Anfragen wie "schreibe einen Artikel", "erstelle einen LinkedIn-Post", "verfasse einen Blog-Beitrag",
+  "schreibe einen Text ueber", "ueberarbeite diesen Artikel", "schreibe einen Fachtext", "erstelle einen Sachtext",
+  "schreibe etwas ueber". Auch triggern bei "mach den Text menschlicher", "klingt zu sehr nach KI", "natuerlicher schreiben".
+  Basiert auf Wikipedia Signs of AI Writing (August 2025) und Journalismus-Forschung zu Leser-Retention.
 ---
 
-## Grundsaetze
+# Human Writing Style Guide
 
-Jeder Text, der mit diesem Skill geschrieben wird, folgt drei Prinzipien:
+Dieser Skill hat zwei Teile. Teil 1 beschreibt, wie gute Sachtexte aufgebaut sind, also Texte, die Leser tatsaechlich lesen, speichern und deren Autor sie sich merken. Teil 2 beschreibt, welche KI-typischen Muster zu vermeiden sind.
 
-1. **Kein Leser soll denken: "Das hat eine KI geschrieben."**
-2. **Der Text muss klingen, als haette ihn ein kompetenter Mensch verfasst, der sein Thema kennt und gern darueber spricht.**
-3. **Lieber ungeschliffen und echt als poliert und steril.**
+Beides gehoert zusammen: Ein Text, der nur KI-Muster vermeidet, ist nicht automatisch gut. Und ein inhaltlich guter Text faellt durch, wenn er nach Sprachmodell klingt.
 
----
+## Teil 1: Wie gute Sachtexte funktionieren
 
-## Schreibstil-Profil (Autorin: Lara)
+### Der Einstieg (Hook)
 
-| Eigenschaft | Auspraegung |
-|-------------|-------------|
-| Grundton | Unterhaltsam, zugaenglich, gelegentlich trocken-humorvoll |
-| Fachwissen | Tief, aber verstaendlich erklaert. Kein "dumbing down", kein Akademiker-Jargon |
-| Haltung | Eigene Meinung vertreten, aber andere Auffassungen fair abwaegen |
-| Praxisbezug | Konkrete Beispiele, echte Zahlen, erlebte Situationen |
-| Wissenschaftlich | Bei Fachthemen: Quellen nennen, Studienlage darstellen, Kontroversen nicht glaetten |
-| Humor | Wenn er sich ergibt. Nicht erzwingen. Trockener Humor, Understatement, Selbstironie |
-| Verboten | Gedankenstriche (weder Em-Dashes noch En-Dashes, NIEMALS). Stattdessen: Kommas, Klammern, Punkte, neue Saetze |
+Der erste Satz entscheidet, ob jemand weiterliest. Gute Hooks sind faktisch korrekt und wecken Neugier. Erfundene Geschichten als Einstieg sind verboten, weil sie Glaubwuerdigkeit zerstoeren und als KI-Muster erkannt werden ("Stell dir vor, es ist 6 Uhr morgens in einer Fabrikhalle...").
 
----
+Sechs bewaehrte Hook-Typen, die abgewechselt werden muessen:
 
-## Wissenschaftlicher Hintergrund: Warum KI-Texte erkennbar sind
+**1. Kontraintuitive Aussage**
+"Die meisten Schichtleiter drucken ihre KPIs morgens auf Papier aus. Nicht weil sie Technik ablehnen, sondern weil ihr MES keine brauchbare Morgen-Ansicht hat."
 
-### Perplexity und Burstiness
+**2. Ueberraschende Zahl oder Statistik**
+"92% der Excel-Dateien in der Fertigungsplanung enthalten mindestens einen Formelfehler (Panko, 2008)."
 
-KI-Detektoren wie GPTZero, Turnitin und Originality.ai nutzen zwei Kernmetriken:
+**3. Konkrete Szene (real, nicht erfunden)**
+"Im Audit letzte Woche fehlten 14 von 200 Chargenprotokollen. Alle aus derselben Schicht."
 
-**Perplexity** misst, wie vorhersagbar ein Text ist. KI-Texte sind statistisch vorhersagbarer, weil Sprachmodelle den wahrscheinlichsten naechsten Token waehlen. Menschliche Texte haben hoehere Perplexity, weil wir unerwartete Wortwahl, Idiome und kreative Wendungen verwenden.
+**4. Direkte Frage**
+"Wann haben Sie zuletzt geprueft, ob Ihre OEE-Berechnung die Mikrostopps mitzaehlt?"
 
-**Burstiness** misst die Variation der Perplexity innerhalb eines Textes. Menschen mischen kurze, einfache Saetze mit langen, komplexen. KI produziert gleichmaessig mittellange Saetze. Diese Gleichfoermigkeit ist einer der staerksten Indikatoren.
+**5. Zitat einer realen Person**
+"'Wir haben drei MES-Systeme evaluiert. Alle konnten alles. Keines konnte das, was wir wirklich brauchten.' (Produktionsleiter, Mittelstand, 2024)"
 
-Quelle: GPTZero (gptzero.me/news/perplexity-and-burstiness-what-is-it/)
+**6. Widerspruch oder Spannung**
+"Unternehmen investieren Millionen in Traceability. Gleichzeitig laufen 40% der Rueckverfolgungen ueber Outlook-Mails."
 
-### Lexikalische Marker
+Nicht jeder Text braucht einen dramatischen Hook. Bei kurzen Fachtexten, Anleitungen oder Status-Updates reicht ein klarer, direkter erster Satz, der sofort sagt, worum es geht.
 
-Eine Studie des Max-Planck-Instituts (2025) zeigt: Woerter wie "robust", "pivotal" und "crucial" sind seit ChatGPTs Release um ueber 50% haeufiger in Texten aufgetaucht. Das Wort "delve" kommt in KI-Texten 10x haeufiger vor als in menschlichen (Originality.ai).
+### Die Orientierung (Nut Graf / Summary)
 
-Der Type-Token-Ratio (TTR), also das Verhaeltnis von einzigartigen zu gesamten Woertern, ist bei KI-Texten niedriger. KI wiederholt Woerter oefter und greift zu "sicheren" Formulierungen. Menschen nutzen ein reicheres, kontextabhaengigeres Vokabular.
+Nach dem Hook muss der Leser innerhalb der ersten drei Absaetze wissen:
+- Worum geht es konkret?
+- Warum ist es relevant fuer ihn?
+- Was erwartet ihn im weiteren Text?
 
-Quelle: Stylometric analysis of AI-generated texts (tandfonline.com/doi/full/10.1080/23311983.2025.2553162)
+Bei laengeren Texten (ab ca. 800 Woertern) gehoert eine Summary an den Anfang. Nicht als trockene Aufzaehlung, sondern als kompakter Absatz, der die Kernaussage vorwegnimmt. Das ist keine Entscheidungsschwaeche ("ich verrate schon alles"), sondern Respekt vor der Zeit des Lesers. Wer die Summary liest und denkt "das reicht mir", hat trotzdem etwas mitgenommen. Wer mehr will, liest weiter.
 
-### Strukturelle Muster
+Beispiel fuer eine gute Summary:
+"Dieser Artikel zeigt, warum klassische OEE-Berechnungen in der Praxis oft 5 bis 15 Prozentpunkte daneben liegen, welche drei Fehlerquellen am haeufigsten sind und wie man sie ohne neues Tooling behebt. Lesedauer: 6 Minuten."
 
-KI-Texte folgen erkennbaren Schemata: Listen haben fast immer 3 oder 5 Punkte. Absaetze sind gleich lang. Die Struktur "Einleitung, Hauptteil mit Unterpunkten, Fazit" wird mechanisch eingehalten. Wikipedia dokumentiert diese Muster detailliert unter "Signs of AI writing".
+### Ueberraschende Fakten und dosierter Humor
 
-Quelle: Wikipedia (en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing)
+Ueberraschende Fakten aktivieren das Dopamin-Belohnungssystem und foerdern die Langzeitgedaechtnisbildung (Edutopia, basierend auf neurowissenschaftlichen Studien). Ein guter Sachtext streut alle 300 bis 500 Woerter eine ueberraschende Information ein, die der Leser nicht erwartet hat.
 
-### Hedging und falsche Ausgewogenheit
+Humor funktioniert in Sachtexten, wenn er organisch aus dem Thema kommt. Erzwungener Humor schadet. Gute Formen:
+- Trockene Untertreibung ("Das Spreadsheet hatte 47 Tabs. Die Dokumentation bestand aus einem Post-it.")
+- Selbstironie ("Ja, ich habe auch mal eine Pivot-Tabelle als Datenbank missbraucht.")
+- Absurde, aber wahre Details ("Der Server lief seit 2011 durch. Niemand wusste das Passwort, aber er lief.")
 
-KI-Texte hedgen exzessiv: "might", "could", "perhaps", "generally", "typically" kommen deutlich haeufiger vor als in menschlichen Texten. Gleichzeitig praesentierten sie jedes Thema "ausgewogen", auch wenn eine Seite klar staerker ist. Ergebnis: Texte ohne Rueckgrat.
+Schlechte Formen:
+- Wortspiele, die den Lesefluss stoppen
+- "Stell dir vor"-Szenarien
+- Sarkasmus ueber den Leser oder sein Fachgebiet
 
-Quelle: THE DISAPPEARING AUTHOR (researchleap.com/the-disappearing-author-linguistic-and-cognitive-markers-of-ai-generated-communication/)
+### Spezifische Details statt Abstraktion
 
-### Grenzen der Erkennung
+Der staerkste Hebel fuer einpraegsame Texte sind intime, spezifische Details, die der Leser ohne den Autor nicht kennen wuerde. Das ist der Unterschied zwischen "die Produktion war ineffizient" und "der Schichtleiter druckte jeden Morgen 14 Seiten Excel aus, markierte drei Zeilen gelb und warf den Rest weg."
 
-Stanford-Forschung zeigt: 61% der TOEFL-Essays von Nicht-Muttersprachlern werden faelschlicherweise als KI-generiert markiert. KI-Detektoren sind voreingenommen gegenueber einfacherem Sprachstil. Das bedeutet auch: Die Regeln hier sollen nicht "Detektoren austricksen", sondern genuinen menschlichen Stil foerdern.
+Spezifische Details erzeugen Bilder im Kopf. Abstrakte Aussagen erzeugen nichts.
 
-Quelle: Stanford HAI (hai.stanford.edu/news/ai-detectors-biased-against-non-native-english-writers)
+| Abstrakt (schlecht) | Spezifisch (gut) |
+|---------------------|-------------------|
+| "Die Digitalisierung schreitet voran." | "Seit Januar laeuft die Schichtuebergabe ueber ein Tablet statt ueber das blaue Notizbuch." |
+| "KI kann Prozesse optimieren." | "Der Algorithmus fand heraus, dass Maschine 7 nach jeder Reinigung 12 Minuten laenger braucht als noetig." |
+| "Viele Unternehmen haben Probleme mit Datenqualitaet." | "In der Stichprobe fehlte bei 23% der Chargen die Temperaturangabe beim zweiten Haerteschritt." |
 
----
+### Belege und Quellenarbeit
 
-## REGEL 1: Gedankenstriche sind verboten
+Je nach Texttiefe muessen Belege unterschiedlich ausfallen:
 
-ABSOLUTES VERBOT. Kein Em-Dash, kein En-Dash. Nirgends. Nie.
+| Texttyp | Belegform |
+|---------|-----------|
+| LinkedIn-Post, Blog (kurz) | Einzelne Zahlen mit Quellenhinweis im Text |
+| Fachartikel, Whitepaper | Inline-Referenzen, Quellenverzeichnis am Ende |
+| Technische Dokumentation | Normen, Standards, Versionsnummern |
 
-| Statt | Verwende |
-|-------|----------|
-| Text (Em-Dash) Einschub (Em-Dash) weiter | Text (Klammer auf)Einschub(Klammer zu) weiter |
-| Punkt eins (Em-Dash) Punkt zwei | Punkt eins. Punkt zwei. |
-| Erklaerung (Em-Dash) also das hier | Erklaerung, also das hier |
-| Aufzaehlung (Em-Dash) Details | Aufzaehlung: Details |
+Unbelegte Behauptungen sind in Fachtexten inakzeptabel. Wenn eine Zahl oder Aussage nicht belegbar ist, muss sie als Schaetzung, Erfahrungswert oder Annahme gekennzeichnet werden. "Nach meiner Erfahrung" ist ehrlicher als eine erfundene Statistik.
 
-Erlaubte Alternativen: Komma, Punkt, Doppelpunkt, Klammern, Semikolon, neuer Satz.
+Fachbegriffe und branchenuebliche Abkuerzungen gehoeren in Fachtexte, denn sie signalisieren Kompetenz und sparen Platz. Bei der ersten Verwendung erklaeren, danach frei nutzen. Beispiel: "Die Overall Equipment Effectiveness (OEE) misst ... Im Folgenden spreche ich von OEE."
 
-Bindestrich in zusammengesetzten Woertern ist erlaubt (E-Mail, Open-Source, B2B-SaaS). Das ist Orthografie, kein Stilmittel.
+### Textrhythmus und Struktur
 
----
+Gute Sachtexte haben einen bewussten Rhythmus:
 
-## REGEL 2: Phrasen-Blacklist
+**Satzlaenge variieren.** Kurze Saetze erzeugen Tempo. Laengere Saetze eignen sich fuer Zusammenhaenge, die man nicht in drei Woerter pressen sollte, weil der Leser sonst den Faden verliert. Abwechslung haelt wach.
 
-### Deutsche KI-Phrasen (NIE verwenden)
+**Absatzlaenge variieren.** Ein Absatz darf zwei Saetze haben. Ein anderer sieben. Gleichfoermigkeit ist das Gegenteil von Lesbarkeit.
 
-- "In der heutigen Zeit"
-- "Wie wir alle wissen"
-- "Es ist allgemein bekannt"
-- "Zusammenfassend laesst sich sagen"
-- "Es bleibt festzuhalten"
-- "Abschliessend moechte ich betonen"
-- "Dies fuehrt uns zu der Erkenntnis"
-- "In diesem Zusammenhang"
-- "Darueber hinaus"
-- "Des Weiteren"
-- "Schlussendlich"
-- "Es ist von entscheidender Bedeutung"
-- "Es sei darauf hingewiesen"
-- "Nicht zuletzt"
-- "Im Folgenden"
-- "An dieser Stelle"
-- "Es laesst sich konstatieren"
-- "Vor diesem Hintergrund"
-- "Es zeichnet sich ab, dass"
-- "Ganzheitlich betrachtet"
+**Zwischenueberschriften als Orientierung.** Ueberschriften sollen schlicht sein und sagen, was kommt. Nicht: "Die Revolution der datengetriebenen Fertigung". Sondern: "Wie die Datenerfassung funktioniert".
 
-### Englische KI-Phrasen (NIE verwenden)
+**Uebergaenge zwischen Abschnitten.** Ein Abschnitt soll nicht abrupt enden und der naechste ohne Verbindung beginnen. Ein Satz, der den Bogen schlaegt, reicht.
 
-- "Delve into" / "Delve deeper"
-- "Leverage" (als Verb)
-- "In today's fast-paced world"
-- "It's important to note that"
-- "It's worth noting"
-- "It's crucial to understand"
-- "Furthermore" / "Moreover" / "Additionally" / "Indeed"
-- "This begs the question"
-- "Needless to say"
-- "At the end of the day"
-- "Game-changer" / "Revolutionary"
-- "Seamlessly integrate"
-- "Navigate the complexities"
-- "Unlock the potential"
-- "Fostering innovation"
-- "Streamline processes"
-- "In an era of"
-- "The landscape of"
-- "A testament to"
-- "Paradigm shift"
-- "Holistic approach"
-- "Cutting-edge"
-- "Best-in-class"
-- "Synergies"
+### Einschraenkungen und Ehrlichkeit
 
-### Wertungswoerter die KI ueberverwendet
+Texte, die nur Vorteile nennen, wirken wie Werbung. Texte, die Schwaechen zugeben, Unsicherheiten benennen und Grenzen markieren, wirken authentisch und bleiben im Kopf.
 
-Deutsch: "entscheidend", "massgeblich", "bahnbrechend", "wegweisend", "richtungsweisend", "zukunftsweisend", "umfassend", "ganzheitlich"
+"Das funktioniert gut bei Serien ab 500 Stueck. Unter 100 lohnt sich der Aufwand nicht." Solche Saetze erzeugen Vertrauen.
 
-Englisch: "robust", "pivotal", "crucial", "comprehensive", "groundbreaking", "transformative", "innovative", "impactful"
 
-**Erlaubt**: Jedes dieser Woerter darf vorkommen, wenn es wirklich und einmalig passt. Das Problem ist die Haefung. Ein "entscheidend" pro Text ist menschlich. Drei sind KI.
+## Teil 2: KI-Muster vermeiden
 
----
+### Verbotene Stilmittel
 
-## REGEL 3: Satzrhythmus variieren (Burstiness)
+**Gedankenstriche (Em Dashes) sind verboten.** Kein Gedankenstrich im gesamten Text. Weder als Einschub noch als Ersatz fuer Doppelpunkt oder Semikolon. Seit 2024 gelten Em Dashes in der oeffentlichen Wahrnehmung als KI-Signal. GPT-4o nutzt rund zehnmal mehr Em Dashes als sein Vorgaenger. Ob die Wahrnehmung linguistisch korrekt ist, spielt keine Rolle. Leser reagieren darauf. Also: Punkt, Komma, Semikolon, Doppelpunkt, Klammern. Das reicht.
 
-KI schreibt gleichmaessig: 15 bis 20 Woerter pro Satz, Satz fuer Satz. Menschen nicht.
+**Erfundene Einstiegsgeschichten sind verboten.** Kein "Stell dir vor", kein "Es ist Montag, 6 Uhr morgens in einer Fabrikhalle", kein narrativer Auftakt mit fiktiven Personen. Wenn ein Beispiel den Einstieg bildet, muss es real oder als hypothetisch gekennzeichnet sein.
 
-### So geht es richtig:
+**Erfundene Anekdoten im Fliesstext sind verboten.** Kein "One plant I worked with", kein "A company I know", kein "I've seen cases where". LLMs erfinden routinemaessig konkret klingende Beispiele, um Aussagen zu stuetzen. Diese Pseudo-Anekdoten sind ein starkes KI-Signal. Stattdessen: allgemeine, nachpruefbare Aussagen verwenden ("Weekend standby consumption in manufacturing plants is often 20 to 40 percent of production consumption") oder echte Quellen zitieren. Wenn der Autor tatsaechlich ein reales Beispiel hat, muss es so spezifisch sein, dass es nicht erfunden klingen kann (Firmenname, Ort, Jahr, Kontext).
 
-Kurze Saetze. Dann laengere, die einen Gedanken ausfuehren, der etwas mehr Platz braucht und den Leser durch eine Argumentationskette fuehrt. Dann wieder kurz.
+### Uebernutzte Woerter (AI Vocabulary)
 
-Manchmal ein Fragment. Bewusst.
+Diese Woerter treten seit 2023 signifikant haeufiger in KI-generierten Texten auf:
 
-Und manchmal ein Satz, der einfach laeuft und laeuft, weil der Gedanke noch nicht fertig ist und man das Komma braucht, bevor man zum Punkt kommt.
+| Vermeiden | Stattdessen |
+|-----------|-------------|
+| delve, dive into | untersuchen, anschauen, betrachten |
+| crucial, pivotal, vital | wichtig, relevant, zentral |
+| landscape (metaphorisch) | Bereich, Umfeld, Situation |
+| foster, bolster | unterstuetzen, staerken |
+| harness, leverage | nutzen, einsetzen |
+| multifaceted | komplex, vielschichtig |
+| comprehensive | umfassend, vollstaendig |
+| underscores, highlights | zeigt, macht deutlich |
+| testament to | Beweis fuer, zeigt |
+| realm | Bereich, Gebiet |
+| tapestry, synergy | streichen, meist ueberfluessig |
+| it's important to note | streichen |
+| in conclusion | streichen oder: kurz gesagt |
+| game-changer | streichen oder konkreten Vorteil nennen |
+| revolutionize | streichen oder konkreten Effekt beschreiben |
+| seamlessly | streichen |
+| robust (ausserhalb von Technik) | streichen oder praeziser formulieren |
 
-### Konkrete Regel:
+### Dramatische Uebergangsphrasen (KI-Rhetorik)
 
-- Satzlaengen im Text sollen zwischen 3 und 35+ Woertern schwanken
-- Kein Absatz soll exakt gleich lang sein wie der vorherige
-- Nach einem langen, erklaerenden Absatz darf ein Einzeiler kommen
-- Abrupte Enden sind erlaubt. Kein Zwangs-Fazit.
+LLMs erzeugen typische rhetorische Uebergaenge, die in menschlichen Fachtexten selten vorkommen. Diese Phrasen sind starke KI-Signale:
 
----
+**Englisch (verboten):**
+- "And that is the part nobody talks about..."
+- "Here's the tension though."
+- "The gap is not in X. The gap is in Y." (gespiegelte Satzstruktur als Pointe)
+- "Here's the thing."
+- "Let that sink in."
+- "And here's why that matters."
+- "But here's where it gets interesting."
+- "The short answer is... The long answer is..."
 
-## REGEL 4: Struktur darf unperfekt sein
+**Deutsch (verboten):**
+- "Und genau das ist der Punkt, den niemand anspricht..."
+- "Hier wird es spannend."
+- "Das Problem ist nicht X. Das Problem ist Y."
+- "Und das hat Konsequenzen."
 
-### KI-typische Strukturen (VERMEIDEN):
+Stattdessen: Uebergaenge weglassen oder durch einen normalen Satz ersetzen, der den naechsten Gedanken einleitet. Nicht jeder Abschnitt braucht einen dramatischen Auftakt.
 
-- Exakt 3 oder 5 Punkte in jeder Liste
-- Jeder Punkt gleich lang
-- Perfekte Hook, Body, CTA Abfolge
-- Jeder Abschnitt mit Zusammenfassung
-- Symmetrische Gliederung (3 Hauptpunkte mit je 3 Unterpunkten)
-- Fettdruck bei jedem wichtigen Begriff
+### Rhythmische Wiederholung als Pseudo-Pointe
 
-### Menschliche Strukturen (BEVORZUGEN):
+LLMs nutzen rhythmische Satzwiederholungen, um Texte "knackig" wirken zu lassen. Das gleiche Satzmuster wird drei- oder viermal hintereinander angewendet, jeweils mit anderem Inhalt:
 
-- Listen mit 2, 4, 6 oder 7 Punkten
-- Punkte unterschiedlich ausfuehrlich
-- Manchmal kein Fazit. Der Leser denkt selbst.
-- Abschnitte unterschiedlich lang
-- Gelegentlich ein Gedanke, der nicht perfekt in die Gliederung passt, aber trotzdem rein muss
-- Ueberschriften duerfen informell sein ("Warum das keiner macht" statt "Analyse der Implementierungsbarrieren")
+**Verbotene Muster:**
+- "Das ist eure Baseline." / "Das ist Cash." / "Das ist Scope 2." (gleiche Satzstruktur als rhetorischer Hammer)
+- "That's your energy data. That's your compliance. That's your competitive edge."
+- Jede Variation von "kurze Aussage + einzeiliger Kommentar", die sich mehr als zweimal hintereinander wiederholt
 
----
+Dieses Muster faellt auf, weil menschliche Autoren selten dreimal denselben rhetorischen Trick in Folge verwenden. Ein- oder zweimal kann es wirken. Ab dem dritten Mal ist es ein Muster, kein Stilmittel.
 
-## REGEL 5: Authentische Stimme statt KI-Neutralitaet
+**Stattdessen:** Satzstrukturen variieren. Wenn ein kurzer Kommentarsatz gut funktioniert, dann einmal verwenden und danach die Struktur wechseln.
 
-### Eigene Meinung vertreten
+### Konfrontativer Ton als Anti-KI-Signal (optional)
 
-KI hedgt alles: "This could potentially be beneficial in certain scenarios." Menschen sagen: "Ich halte das fuer den richtigen Ansatz. Hier ist warum."
+LLMs schreiben standardmaessig neutral, ausgewogen und vorsichtig. Das ist in vielen Kontexten richtig (Fachpublikation, technische Dokumentation). Aber in Kontexten wie Reddit, LinkedIn-Posts, Branchenblogs oder Meinungsbeitraegen wirkt diese Neutralitaet kuenstlich.
 
-Hedging ist erlaubt, wenn echte Unsicherheit besteht. Aber nicht als Standardmodus.
+Wenn der Kontext es erlaubt, ist ein konfrontativer, meinungsstarker Ton ein starkes Signal fuer menschliches Schreiben:
+- Direkte Kritik ("Die meisten ESG-Berater verkaufen bunte PDFs ohne Substanz")
+- Provokante Thesen ("Wer fuer den ESG-Bericht schwitzt, hat in der Digitalisierung versagt")
+- Vereinfachungen, die Diskussion provozieren sollen (bewusst zugespitzt, nicht unwahr)
+- Umgangssprache und Branchenjargon statt Hochsprache
 
-| KI-Hedging (vermeiden) | Menschliche Alternative |
-|------------------------|------------------------|
-| "Es koennte argumentiert werden, dass" | "Ich sehe das so:" |
-| "Man muss beruecksichtigen" | "Wichtig dabei:" |
-| "Es gibt verschiedene Perspektiven" | Die Perspektiven einfach nennen und bewerten |
-| "This might be worth considering" | "Das sollte man sich anschauen" |
-| "One could argue that" | "Mein Punkt:" oder "Gegenargument:" |
+Das ist KEIN Freibrief fuer Polemik ohne Substanz. Die Schaerfe muss inhaltlich gedeckt sein. Aber: ein Text, der niemanden provoziert, wird auch von niemandem geteilt.
 
-### Humor und Tonfall
+Dieses Mittel ist optional und kontextabhaengig. Fuer eine technische Dokumentation oder ein Whitepaper waere es fehl am Platz. Fuer einen Reddit-Post in r/manufacturing ist es genau richtig.
 
-Humor entsteht aus der Sache, nicht aus Witzen. Beispiele:
+### Aufgeblaehte Phrasen
 
-**Statt:** "Die Implementierung gestaltete sich als herausfordernd."
-**Besser:** "Die Implementierung hat uns drei Wochen und einige graue Haare gekostet."
+Diese Formulierungen streichen oder durch die direkte Aussage ersetzen:
+- "This isn't just about X. It's about transformation."
+- "X continues to redefine the landscape."
+- "A testament to the power of Y."
+- "One of the most important things to consider is..."
+- "In today's fast-paced world..."
+- "It's worth noting that..."
+- "Let's dive in."
+- "But here's the thing..."
+- "Without further ado..."
 
-**Statt:** "Es ist interessant zu bemerken, dass die Ergebnisse unerwartet ausfielen."
-**Besser:** "Die Ergebnisse haben uns ehrlich gesagt ueberrascht."
+### Emphasis Crutches (Betonungs-Kruecken)
 
-**Statt:** "Der Prozess erforderte mehrere Iterationen."
-**Besser:** "Beim dritten Anlauf hat es endlich funktioniert."
+Leere Verstaerker, die Wichtigkeit signalisieren ohne sie zu liefern. Streichen.
 
-### Praxisbezug
+- "Full stop." / "Period." / "Punkt."
+- "Make no mistake" / "Keine Frage"
+- "This matters because" / "Das ist wichtig weil"
 
-Abstrakte Aussagen konkret machen:
+### Business-Jargon
 
-**Statt:** "KI kann die Effizienz in der Fertigung signifikant steigern."
-**Besser:** "Wir haben mit einer simplen Anomalie-Erkennung auf Sensordaten die Stillstandszeiten um 23% reduziert. Keine Raketenwissenschaft, ein Nachmittag Arbeit."
+| Vermeiden | Stattdessen |
+|-----------|-------------|
+| navigate (challenges) | handle, address / angehen, bearbeiten |
+| unpack (analysis) | explain, examine / erklaeren, untersuchen |
+| lean into | accept, embrace / annehmen, akzeptieren |
+| double down | commit, increase / sich festlegen, verstaerken |
+| deep dive | analysis, examination / Analyse, Untersuchung |
+| take a step back | reconsider / ueberdenken |
+| moving forward | next, from now / als naechstes, ab jetzt |
+| circle back | return to, revisit / zurueckkommen auf |
+| on the same page | aligned, agreed / abgestimmt, einig |
 
----
+### Meta-Commentary (Selbstreferenz)
 
-## REGEL 6: Wissenschaftliche Texte richtig schreiben
+Texte die ueber sich selbst reden statt vorwaerts zu kommen. Streichen.
 
-Bei Fachthemen gelten zusaetzliche Regeln:
+- "Hint:" / "Plot twist:" / "Spoiler:"
+- "You already know this, but" / "Du weisst das schon, aber"
+- "But that's another post" / "Aber das ist ein anderes Thema"
+- "X is a feature, not a bug"
+- "The rest of this essay explains..." / "Im Folgenden erklaere ich..."
+- "Let me walk you through..." / "Lass mich dich durchfuehren..."
+- "In this section, we'll..." / "In diesem Abschnitt werden wir..."
+- "As we'll see..." / "Wie wir sehen werden..."
+- "I want to explore..." / "Ich moechte untersuchen..."
 
-### Tiefe statt Breite
+### Telling statt Showing
 
-Nicht alles oberflaechlich abhandeln. Lieber einen Aspekt gruendlich beleuchten, als fuenf anzureissen. KI neigt zum Gegenteil: moeglichst viele Punkte, keinen davon richtig.
+Wichtigkeit oder Schwierigkeit behaupten statt sie zu zeigen. Streichen oder durch konkretes Beispiel ersetzen.
 
-### Kontroversen darstellen
+- "This is genuinely hard" / "Das ist wirklich schwierig"
+- "This is what leadership actually looks like" / "So sieht Fuehrung wirklich aus"
+- "actually matters" / "wirklich wichtig ist"
 
-Wenn es in einem Feld verschiedene Auffassungen gibt: beide (oder alle) darstellen, jeweils mit den staerksten Argumenten, und dann eine eigene Einschaetzung geben. Nicht kuenstlich "ausgewogen" bleiben, wenn die Evidenz eine Richtung zeigt.
+### Vague Declaratives (Vage Feststellungen)
 
-Beispiel:
-"Smith et al. (2024) argumentieren, dass Perplexity-basierte Erkennung ausreicht. Die Stanford-Gruppe um Liang widerspricht: Ihre Daten zeigen 61% False Positives bei Nicht-Muttersprachlern (Liang et al., 2023). Die Detektoren messen nicht KI-Nutzung, sondern Sprachkomplexitaet. Ich halte Liangs Argument fuer ueberzeugender, weil..."
+Saetze die Bedeutung behaupten ohne den konkreten Inhalt zu nennen. Entweder streichen oder die konkrete Sache benennen.
 
-### Quellen
+- "The reasons are structural" / "Die Gruende sind strukturell"
+- "The implications are significant" / "Die Auswirkungen sind erheblich"
+- "This is the deepest problem" / "Das ist das tiefste Problem"
+- "The stakes are high" / "Es steht viel auf dem Spiel"
+- "The consequences are real" / "Die Konsequenzen sind real"
 
-- Inline-Zitation: Autorenname und Jahr, nicht als Fussnote
-- Am Ende des Textes: vollstaendige Quellenangabe mit URL wenn verfuegbar
-- Keine erfundenen Quellen. Wenn du dir unsicher bist, sag es ("Dazu habe ich keine belastbare Quelle gefunden, aber...")
-- Primaerquellen bevorzugen. Nicht die Zusammenfassung der Zusammenfassung zitieren
+### Adverbien und Softener
 
-### Terminologie
+Kategorisch alle -ly-Adverbien hinterfragen. Die meisten sind Fuellmaterial. Speziell diese Woerter immer streichen:
 
-Fachbegriffe verwenden, wenn das Publikum sie kennt. Beim ersten Auftreten kurz erklaeren, danach ohne Erklaerung. Keine kuenstliche Vereinfachung, aber auch kein Jargon um des Jargons willen.
+| Englisch | Deutsch |
+|----------|---------|
+| really, just, literally | wirklich, einfach, buchstaeblich |
+| genuinely, honestly, simply | aufrichtig, ehrlich gesagt, schlicht |
+| actually, deeply, truly | tatsaechlich, zutiefst, wahrlich |
+| fundamentally, inherently | grundsaetzlich, von Natur aus |
+| inevitably, interestingly | unweigerlich, interessanterweise |
+| importantly, crucially | wichtigerweise, entscheidenderweise |
 
----
+Sowie diese Fuellphrasen:
+- "At its core" / "Im Kern"
+- "At the end of the day" / "Am Ende des Tages"
+- "When it comes to" / "Wenn es um ... geht"
+- "In a world where" / "In einer Welt in der"
+- "The reality is" / "Die Realitaet ist"
 
-## REGEL 7: Formatierung
+### Symmetrische Argumentationsboegen (LLM-Outline-Pattern)
 
-### Erlaubt
+LLMs erzeugen fast immer dieselbe Textarchitektur: Problem darstellen, Loesung erklaeren, Gegenargumente aufnehmen, pragmatischen Mittelweg vorschlagen, Bias offenlegen. Diese Sequenz ist so vorhersagbar, dass sie allein schon als KI-Signal reicht. Ein menschlicher Autor springt, schweift ab, setzt Schwerpunkte willkuerlich, laesst Dinge weg.
 
-- Absaetze (unterschiedlich lang)
-- Fettdruck (sparsam, max 2-3 pro Abschnitt)
-- Nummerierte Listen (wenn tatsaechlich eine Reihenfolge existiert)
-- Bullet Points (sparsam, nicht fuer alles)
-- Ueberschriften (informell erlaubt)
-- Klammern fuer Einschuebe
-- Doppelpunkt fuer Ankuendigungen
-- Anfuehrungszeichen fuer Zitate
+**Regeln zur Textarchitektur:**
 
-### Verboten
+- Nicht jeder Abschnitt braucht ein symmetrisches Gegenstueck. Wenn du "Vorteile" schreibst, brauchst du nicht zwingend "Nachteile" als naechsten Abschnitt.
+- Abschnitte duerfen unterschiedlich lang sein. Ein Abschnitt mit 3 Saetzen neben einem mit 12 Saetzen ist normal. Gleichmaessig portionierte Abschnitte sind ein KI-Signal.
+- Die Reihenfolge der Argumente darf unkonventionell sein. Statt Problem-Loesung-Einschraenkung mal mit der Einschraenkung anfangen. Oder den staerksten Punkt in die Mitte statt ans Ende setzen.
+- Abschweifungen und Seitenbemerkungen sind erlaubt und erwuenscht. Menschen schreiben sprunghafter als LLMs. Ein Gedanke, der nur halb zum Thema passt, aber interessant ist, macht einen Text menschlicher.
+- Nicht jeder Abschnitt braucht eine Zwischenueberschrift. Manche Gedanken fliessen besser ohne formale Trennung ineinander.
+- Vermeide das Muster "X hat Vorteile und Nachteile, die Wahrheit liegt in der Mitte". Das ist der Default-Ausgang jedes LLM-Textes und sofort erkennbar.
+- Vermeide perfekt symmetrische Ueberschriften-Paare wie "Why skeptics have a point" / "Why they'll still need it". Menschen strukturieren asymmetrischer.
 
-- Gedankenstriche jeder Art als Stilmittel
-- Emojis als Aufzaehlungspunkte
-- Perfekt symmetrische Tabellen wo Fliesstext reicht
-- Fettdruck bei jedem wichtigen Wort
-- Horizontale Trenner
-- Jeder Satz eine eigene Zeile ("LinkedIn Poetry")
+### Breite Generalisten-Perspektive vermeiden
 
----
+LLMs decken reflexartig moeglichst viele Aspekte eines Themas ab: Technik, Finanzen, Recruiting, Regulierung, alles in einem Artikel. Das wirkt wie ein Wikipedia-Eintrag, nicht wie ein Fachmensch, der ueber sein Spezialgebiet schreibt.
 
-## REGEL 8: Alternativen-Tabelle (Quick Reference)
+**Regeln:**
 
-| KI-typisch | Menschliche Alternative |
-|-----------|------------------------|
-| "I'm thrilled to announce" | Direkt ins Thema. "Endlich fertig:" |
-| "Here are 5 key takeaways" | "Was hat funktioniert?" |
-| "In der heutigen Zeit" | "Momentan" / "Gerade" / weglassen |
-| "Zusammenfassend laesst sich sagen" | "Also:" / "Heisst:" / einfach aufhoeren |
-| "Darueber hinaus" | "Ausserdem" / "Und:" |
-| "Es ist von entscheidender Bedeutung" | "Wichtig:" oder einfach sagen warum |
-| "It's worth noting" | Die Sache einfach direkt sagen |
-| "This begs the question" | Die Frage stellen |
-| "Schlussendlich" | "Am Ende" / "Letztlich" |
-| "Navigate the complexities" | "Das ist kompliziert, weil..." |
-| "Seamlessly integrate" | "Laesst sich einbauen" |
-| "Ganzheitlich betrachtet" | "Wenn man alles zusammennimmt" |
-| "Vor diesem Hintergrund" | "Deshalb" / "Weil" |
-| Erklaerung (Gedankenstrich) Details | Erklaerung, Details / Erklaerung (Details) |
+- Ein Artikel hat einen Schwerpunkt. Nicht drei. Wenn das Thema ESG-Daten auf dem Shopfloor ist, dann ist der Schwerpunkt die Daten, nicht auch noch Recruiting und Bankkonditionen.
+- Randthemen duerfen in einem Satz erwaehnt werden, aber nicht in einem eigenen Absatz.
+- Frag dich: Wuerde ein einzelner Fachmensch das alles in einem Text abhandeln? Wenn nein, streiche die Nebenschauplaetze.
+- Tiefe schlaegt Breite. Lieber eine technische Sache gruendlich erklaeren als fuenf Themen anreissen.
 
----
+### Plausible Zahlen ohne Quellen (verschaerfte Regel)
 
-## REGEL 9: Selbstcheck vor Abgabe
+LLMs generieren realistisch klingende Zahlen ohne echte Quellen. "40 to 60 percent", "$29,000 per employee", "0.3 to 0.8 percentage points" klingen plausibel, sind aber oft halluziniert oder unpraezise aus Trainingsdaten zusammengesetzt. Ein menschlicher Fachautor wuerde schreiben: "According to study X by institution Y (year)".
 
-Vor dem Abschicken jeden Text gegen diese Checkliste pruefen:
+**Verschaerfte Regeln:**
 
-1. Enthaelt der Text Gedankenstriche? Ersetzen.
-2. Kommen Phrasen von der Blacklist vor? Ersetzen.
-3. Sind alle Saetze aehnlich lang? Variieren.
-4. Sind alle Absaetze aehnlich lang? Variieren.
-5. Hat jede Liste exakt 3 oder 5 Punkte? Anpassen.
-6. Klingt der Text "ausgewogen" ohne eigene Position? Position beziehen.
-7. Fehlen konkrete Beispiele oder Zahlen? Ergaenzen.
-8. Wuerde ein Mensch das Fazit so schreiben, oder klingt es nach Pflichtprogramm? Ggf. streichen.
-9. Klingt es unterhaltsam, als wuerde man es gern weiterlesen? Falls nein, Ton anpassen.
-10. Bei wissenschaftlichen Texten: Sind Quellen inline zitiert, werden Gegenpositionen fair dargestellt?
+- Jede Zahl, die eine Behauptung stuetzt, braucht eine der folgenden Kennzeichnungen:
+  1. Echte Quelle (Studie, Bericht, Institution, Jahr)
+  2. Explizite Kennzeichnung als Schaetzung ("nach meiner Erfahrung liegt das bei...", "Branchenschaetzungen gehen von... aus")
+  3. Herleitung ("bei 200 kWh pro Schicht und 250 Arbeitstagen ergibt sich...")
+- Zahlen ohne jede Einordnung sind verboten. "20 to 40 percent" ohne Kontext ist ein KI-Signal.
+- Lieber weniger Zahlen mit echten Quellen als viele Zahlen ohne Beleg. Drei belegte Zahlen sind staerker als zehn unbelegte.
+- Im Zweifel die Zahl weglassen und die Aussage qualitativ formulieren.
 
----
+### Credibility Wrapper und Bias-Disclaimer
 
-## Beispiele: Vorher/Nachher
+LLMs bauen am Ende von Texten routinemaessig einen Absatz ein, der die eigene Perspektive relativiert: "I should disclose that I work in X, so I have a professional interest in Y. This bias is worth naming." Das klingt auf den ersten Blick ehrlich, ist aber ein typisches LLM-Pattern, weil es mechanisch angefuegt wird, ohne echte Substanz.
 
-### Beispiel 1: Blog-Intro
+**Regeln:**
 
-**KI-typisch (schlecht):**
-```
-In der heutigen Zeit ist es von entscheidender Bedeutung, dass Fertigungsunternehmen
-ihre Produktionsdaten effektiv nutzen. Die OEE-Analyse bietet hierfuer einen
-ganzheitlichen Ansatz, der es ermoeglicht, Verfuegbarkeit, Leistung und Qualitaet
-umfassend zu bewerten. Darueber hinaus koennen durch den Einsatz moderner
-KI-Technologien signifikante Verbesserungen erzielt werden.
-```
+- Kein dedizierter "Honest caveat" oder "Disclosure" Absatz am Ende. Wenn der Autor einen Bias hat, soll er ihn nebenbei im Text erwaehnen, nicht als formalen Disclaimer.
+- Kein "I work in X, so take this with a grain of salt". Stattdessen: die Perspektive des Autors durch die Art, wie er schreibt, deutlich machen.
+- Einschraenkungen gehoeren dorthin, wo sie inhaltlich relevant sind, nicht als zusammengefassten Absatz am Schluss.
+- Der Autor-Tagline am Ende (z.B. "I've spent 15 years in X") ist okay, aber ohne den Relativierungs-Absatz davor.
 
-**Menschlich (gut):**
-```
-Die meisten Fertigungsunternehmen sammeln Produktionsdaten. Die wenigsten tun
-etwas Sinnvolles damit. OEE-Analyse ist einer der Ansaetze, die tatsaechlich
-funktionieren, wenn man sie richtig einsetzt. Nicht weil die Metrik so brilliant
-ist (sie hat Schwaechen, dazu gleich mehr), sondern weil sie Verfuegbarkeit,
-Leistung und Qualitaet in eine einzige Zahl presst. Das zwingt zum Hinschauen.
-```
+### Strukturelle KI-Muster
 
-### Beispiel 2: Technische Erklaerung
+| Problem | Loesung |
+|---------|---------|
+| Rule of Three (immer 3 Aufzaehlungspunkte) | Variieren: mal 2, mal 4, mal keine Liste |
+| Gleichfoermige Absatzlaengen | Absaetze bewusst unterschiedlich lang. Konkret: mindestens ein Absatz mit 1-2 Saetzen und mindestens ein Absatz mit 6+ Saetzen pro 500 Woerter |
+| Uebermaessige Bullet-Points | Fliesstext bevorzugen |
+| Aufgeblaehte Ueberschriften | Schlichte Zwischentitel |
+| Jeder Abschnitt endet mit Zusammenfassung | Zusammenfassungen weglassen |
+| Jeder Absatz beginnt mit Ueberleitung | Mal direkt einsteigen |
+| Alle Absaetze 3-6 Saetze, aehnliche Satzlaenge, gleicher Ton | Rhythmus bewusst brechen: ein Zweizeiler, dann ein langer Block, dann ein Einzeiler |
 
-**KI-typisch (schlecht):**
-```
-Statistical Process Control (SPC) represents a crucial methodology for maintaining
-quality standards in manufacturing environments. By leveraging control charts and
-statistical analysis, organizations can seamlessly monitor process variations and
-proactively identify potential issues before they escalate into significant problems.
-```
+### Strukturelle Satzmuster (erweitert)
 
-**Menschlich (gut):**
-```
-SPC (Statistical Process Control) ist im Kern simpel: Du misst einen Prozess
-wiederholt, traegst die Werte in ein Diagramm ein und schaust, ob sie innerhalb
-der Grenzen bleiben. Tun sie das nicht, stimmt was nicht. Walter Shewhart hat das
-in den 1920ern bei Bell Labs entwickelt. Seitdem hat sich an der Grundidee
-erstaunlich wenig geaendert, an der Umsetzung allerdings schon.
-```
+Die folgenden Muster sind in KI-generierten Texten statistisch ueberrepraesentiert. Sie wirken einzeln harmlos, aber in Kombination verraten sie die Herkunft.
 
-### Beispiel 3: Wissenschaftlich/abwaegend
+**Binary Contrasts (Binaere Gegensaetze)**
 
-**KI-typisch (schlecht):**
-```
-The efficacy of AI-powered predictive maintenance remains a subject of ongoing debate.
-While some studies suggest significant cost savings, it's important to note that
-implementation challenges may limit real-world applicability. Furthermore, the
-complexity of manufacturing environments necessitates a holistic approach that considers
-multiple factors. Nevertheless, the potential benefits are undeniable.
-```
+Das Muster "Not X. But Y." oder "The answer isn't X. It's Y." erzeugt kuenstliche Dramatik. Stattdessen: Y direkt nennen.
 
-**Menschlich (gut):**
-```
-Ob Predictive Maintenance per KI wirklich spart, ist weniger klar als die Marketing-
-Folien vermuten lassen. McKinsey (2023) beziffert das Einsparpotenzial auf 10-40%
-der Wartungskosten. Mobley et al. kommen auf aehnliche Werte, allerdings unter
-Laborbedingungen. In der Praxis sieht es anders aus: Eine Studie von Vogl et al.
-(2019) zeigt, dass 38% der befragten Unternehmen ihre PdM-Projekte nach der
-Pilotphase wieder eingestellt haben. Hauptgrund: Die Datenqualitaet reichte nicht.
+| Vermeiden | Stattdessen |
+|-----------|-------------|
+| "Not because X. Because Y." | "Because Y." |
+| "Es geht nicht um X. Es geht um Y." | "Es geht um Y." |
+| "The question isn't X. It's Y." | "The question is Y." |
+| "Die Antwort ist nicht X. Die Antwort ist Y." | "Die Antwort ist Y." |
+| "stops being X and starts being Y" | Direkt beschreiben was passiert |
+| "hoert auf X zu sein und wird zu Y" | Direkt beschreiben was passiert |
 
-Meine Einschaetzung: PdM funktioniert, aber nur wenn die Basisdaten stimmen. Wer
-seine Maschinendaten nicht sauber erfasst, baut auf Sand.
-```
+**Negative Listing (Negativ-Aufzaehlung)**
 
----
+Aufzaehlen was etwas NICHT ist, bevor man sagt was es IST. Der Leser braucht die Anlaufstrecke nicht.
 
-## Integration mit anderen Skills
+| Vermeiden | Stattdessen |
+|-----------|-------------|
+| "Not a X. Not a Y. A Z." | "A Z." / "Ein Z." |
+| "Es war kein X. Es war kein Y. Es war Z." | "Es war Z." |
 
-Dieser Skill gilt als Basis-Layer fuer alle Content-erzeugenden Skills:
+**Dramatic Fragmentation (Dramatische Fragmentierung)**
 
-- **linkedin-engagement**: Nutzt diesen Skill plus LinkedIn-spezifische Regeln
-- **reddit-research**: Nutzt diesen Skill plus Reddit-Tonfall
-- **doc-generator**: Nutzt diesen Skill im Modus "technisch-praezise"
-- **prompt-architect**: Nutzt diesen Skill fuer die Prompt-Formulierung
+Satzfragmente als Stilmittel wirken wie kuenstliche Tiefe.
 
-Bei Konflikten zwischen plattform-spezifischen Skills und diesem Skill gelten die plattform-spezifischen Regeln, AUSSER bei:
-- Gedankenstrich-Verbot (gilt IMMER)
-- Phrasen-Blacklist (gilt IMMER)
-- Burstiness-Anforderung (gilt IMMER)
+| Vermeiden | Stattdessen |
+|-----------|-------------|
+| "Trust. That's it. That's the thing." | Vollstaendigen Satz schreiben |
+| "Vertrauen. Mehr nicht. Das ist alles." | Vollstaendigen Satz schreiben |
+| "X. And Y. And Z." | Normaler Satz mit Konjunktionen |
+| "This unlocks something. [Einzelnes Wort]." | Aussage in einem Satz formulieren |
 
----
+**Rhetorical Setups (Rhetorische Anlaufnehmer)**
+
+Diese Phrasen kuendigen eine Erkenntnis an, statt sie zu liefern.
+
+| Vermeiden | Stattdessen |
+|-----------|-------------|
+| "What if [Reframe]?" | Reframe direkt als Aussage formulieren |
+| "Was waere, wenn [Reframe]?" | Reframe direkt als Aussage formulieren |
+| "Here's what I mean:" | Streichen, direkt weiterschreiben |
+| "Think about it:" / "Denk mal drueber nach:" | Streichen |
+| "And that's okay." / "Und das ist in Ordnung." | Streichen, Leser braucht keine Erlaubnis |
+
+**False Agency (Falsche Handlungsfaehigkeit)**
+
+KI gibt leblosen Dingen menschliche Verben, um den Akteur nicht benennen zu muessen.
+
+| Vermeiden | Stattdessen |
+|-----------|-------------|
+| "the decision emerges" | "the team decided" |
+| "die Entscheidung entsteht" | "das Team entschied" |
+| "the market rewards" | "buyers pay for" |
+| "der Markt belohnt" | "Kunden kaufen" |
+| "the data tells us" | "we concluded from the data" |
+| "die Daten zeigen uns" | "wir schliessen aus den Daten" |
+| "the culture shifts" | "people changed their behavior" |
+| "die Kultur veraendert sich" | "die Mitarbeiter aenderten ihr Verhalten" |
+
+Faustregel: Wenn ein Subjekt im Satz nichts physisch tun kann, fehlt der eigentliche Akteur.
+
+**Narrator-from-a-Distance (Erzaehler aus der Ferne)**
+
+KI schreibt wie ein allwissender Beobachter statt den Leser in die Szene zu setzen.
+
+| Vermeiden | Stattdessen |
+|-----------|-------------|
+| "Nobody designed this." | "You didn't sit down and design this." |
+| "Niemand hat das so geplant." | "Du hast dich nicht hingesetzt und das geplant." |
+| "This happens because..." | "You see this when..." |
+| "Das passiert weil..." | "Das faellt dir auf wenn..." |
+| "People tend to..." | "You probably..." |
+| "Menschen neigen dazu..." | "Du kennst das vermutlich..." |
+
+**Passive Voice (Passivkonstruktionen)**
+
+Passiv versteckt den Handelnden und nimmt dem Satz Energie.
+
+| Vermeiden | Stattdessen |
+|-----------|-------------|
+| "X was created" / "X wurde erstellt" | Wer hat es erstellt? Benennen. |
+| "It is believed that" / "Es wird angenommen" | Wer nimmt das an? Benennen. |
+| "Mistakes were made" / "Fehler wurden gemacht" | Wer hat die Fehler gemacht? Benennen. |
+| "The decision was reached" / "Die Entscheidung wurde getroffen" | Wer hat entschieden? Benennen. |
+
+**Wh-Satzanfaenge als Kruecke**
+
+Saetze die mit What, When, Where, Which, Who, Why, How beginnen, werden zur Kruecke wenn sie sich haeufen.
+
+| Vermeiden | Stattdessen |
+|-----------|-------------|
+| "What makes this hard is..." | "The constraint is..." / "Die Einschraenkung ist..." |
+| "Was das schwierig macht ist..." | Direkt die Einschraenkung nennen |
+| Absaetze die mit "So" beginnen | Mit Inhalt beginnen |
+| Saetze die mit "Look," beginnen | Streichen |
+
+### Tonale KI-Muster
+
+| Problem | Loesung |
+|---------|---------|
+| Validierungsmuster ("Das ist verstaendlich", "Gute Frage") | Direkt zur Sache |
+| Uebertriebene Begeisterung | Nuechtern, sachlich |
+| Vermeidung von Reibung (keine Probleme, alles glatt) | Schwierigkeiten erwaehnen |
+| Perfekte Glaette | Ecken und Kanten zulassen |
+| Ueberheblicher Erklaerton | Auf Augenhoehe schreiben |
+
+### Formatierung
+
+| Problem | Loesung |
+|---------|---------|
+| Uebermaessige Fettschrift | Sparsam einsetzen |
+| Markdown-Artefakte (*asterisks*, _underscores_) | Entfernen |
+| Title Case in deutschen Ueberschriften | Nur erstes Wort gross |
+| Zu viele Aufzaehlungszeichen | Fliesstext bevorzugen |
+
+
+## Teil 3: Scoring vor Abgabe
+
+Bewerte den fertigen Text auf diesen 5 Dimensionen mit je 1-10 Punkten:
+
+| Dimension | Prueffrage | 1 (schlecht) | 10 (gut) |
+|-----------|-----------|--------------|----------|
+| Directness / Direktheit | Stehen Aussagen da oder werden sie angekuendigt? | Jeder Absatz hat Anlaufnehmer | Jeder Satz liefert sofort |
+| Rhythm / Rhythmus | Variieren Satz- und Absatzlaengen? | Alles gleich lang, monoton | Bewusster Wechsel, lebendig |
+| Trust / Leservertrauen | Wird dem Leser zugetraut mitzudenken? | Alles wird erklaert und gerechtfertigt | Fakten stehen, Leser zieht Schluesse |
+| Authenticity / Authentizitaet | Klingt der Text nach einem Menschen? | Sofort als KI erkennbar | Kein KI-Signal erkennbar |
+| Density / Dichte | Ist jedes Wort noetig? | Viel Fuellmaterial, aufgeblaeht | Nichts streichbar ohne Verlust |
+
+**Zielwert: 35 von 50 Punkten.**
+
+Unter 35: Ueberarbeiten. Zuerst die Dimension mit der niedrigsten Punktzahl angehen.
+
+**Quick Checks (schnelle Pruefung vor Abgabe):**
+
+Gehe diese Liste durch. Jedes "Ja" erfordert eine Korrektur:
+
+- Enthaelt der Text Adverbien? Streichen.
+- Passivkonstruktionen? Akteur finden, zum Subjekt machen.
+- Lebloses Ding fuehrt menschliche Handlung aus? Person benennen.
+- Satz beginnt mit What/When/Where/Who/Why/How und es haeuft sich? Umstrukturieren.
+- "Here's what/this/that"-Anlauf? Zum Punkt kommen.
+- "Not X, it's Y"-Kontrast? Y direkt nennen.
+- Drei aufeinanderfolgende Saetze gleicher Laenge? Einen brechen.
+- Absatz endet mit knackigem Einzeiler? Variieren.
+- Gedankenstrich irgendwo? Entfernen.
+- Vage Feststellung ohne konkreten Inhalt? Konkret machen oder streichen.
+- Erzaehlerstimme aus der Ferne? Leser in die Szene setzen.
+- Meta-Kommentar ("Im Folgenden...", "Let me walk you through...")? Streichen.
+
+
+## Checkliste vor Veroeffentlichung
+
+**Inhalt und Struktur:**
+1. Hook: Ist der Einstieg einer der sechs erlaubten Typen? Keine erfundene Geschichte?
+2. Summary: Bei Texten ab 800 Woertern vorhanden?
+3. Fokus: Hat der Text EINEN Schwerpunkt, nicht fuenf Nebenthemen?
+4. Architektur: Ist die Abschnittsfolge NICHT das LLM-Standardmuster (Problem-Loesung-Gegenargument-Mittelweg-Disclaimer)?
+5. Asymmetrie: Sind Abschnitte unterschiedlich lang? Keine symmetrischen Ueberschriften-Paare?
+6. Ueberraschung: Mindestens ein ueberraschender Fakt alle 300 bis 500 Woerter?
+7. Details: Konkrete, spezifische Beispiele statt Abstraktion?
+8. Ehrlichkeit: Einschraenkungen dort, wo sie inhaltlich hingehoeren, NICHT als Sammel-Disclaimer am Ende?
+
+**Belege:**
+9. Jede Zahl hat eine Quelle ODER ist als Schaetzung/Erfahrungswert gekennzeichnet?
+10. Keine "plausibel klingenden" Zahlen ohne jede Einordnung?
+11. Keine erfundenen Anekdoten ("One plant I know", "A company I worked with")?
+
+**Sprachliche KI-Signale:**
+12. Gedankenstriche: Kein einziger Em Dash im Text?
+13. AI-Vokabular: Keine Woerter aus der Vermeidungsliste?
+14. Dramatische Uebergaenge: Keine KI-Rhetorik ("Here's the tension", "And that's the part nobody talks about")?
+15. Gespiegelte Satzstrukturen als Pointe vermieden ("The gap is not in X. The gap is in Y.")?
+16. Keine rhythmische Wiederholung (gleiche Satzstruktur 3+ mal hintereinander)?
+
+**Rhythmus und Format:**
+17. Satzlaengen: Bewusst variabel (nicht alles 15-20 Woerter)?
+18. Absatzlaengen: Bewusst variabel (mindestens ein Zweizeiler und ein 6+ Satz-Block)?
+19. Bullet-Points: Auf das Noetigste reduziert, Fliesstext bevorzugt?
+20. Ueberschriften: Schlicht und direkt?
+21. Ton: Wie ein kompetenter Fachmensch, nicht wie eine PR-Agentur? Bei Reddit/LinkedIn ggf. bewusst konfrontativ?
+
+**Meta-Check:**
+22. Wuerde ein einzelner menschlicher Fachautor diesen Text so schreiben? Oder deckt er zu viele Gebiete gleichzeitig ab?
+23. Kein Credibility-Wrapper am Ende ("I should disclose my bias...")?
+
+**Stop-Slop-Checks:**
+24. Scoring: Erreicht der Text mindestens 35/50 Punkte im Scoring (Teil 3)?
+25. False Agency: Kein lebloses Subjekt fuehrt menschliche Handlung aus?
+26. Passive Voice: Akteur ueberall benannt?
+27. Meta-Commentary: Keine Selbstreferenz ("In this section...", "Im Folgenden...")?
+28. Business-Jargon: Kein navigate, unpack, lean into, double down, deep dive?
+29. Vague Declaratives: Keine Saetze die Bedeutung behaupten ohne konkreten Inhalt?
+30. Adverbien: Keine unnoetig verstaerkenden Adverbien (really, just, genuinely, actually)?
+
 
 ## Quellen
 
-- GPTZero: Perplexity and Burstiness (gptzero.me/news/perplexity-and-burstiness-what-is-it/)
-- Stanford HAI: AI-Detectors Biased Against Non-Native English Writers (hai.stanford.edu/news/ai-detectors-biased-against-non-native-english-writers)
-- Liang et al. (2023): GPT detectors are biased against non-native English writers (arxiv.org/abs/2304.02819)
-- Wikipedia: Signs of AI writing (en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing)
-- Max Planck Institute (2025): Lexical frequency shifts post-ChatGPT
-- Stylometric analysis of AI-generated texts: ChatGPT vs DeepSeek (tandfonline.com/doi/full/10.1080/23311983.2025.2553162)
-- Nature Scientific Reports: Identifying AI-generated content using DistilBERT (nature.com/articles/s41598-025-08208-7)
-- THE DISAPPEARING AUTHOR (researchleap.com/the-disappearing-author-linguistic-and-cognitive-markers-of-ai-generated-communication/)
-- Pangram Labs: Comprehensive Guide to Spotting AI Writing Patterns (pangram.com/blog/comprehensive-guide-to-spotting-ai-writing-patterns)
-- TechnoLlama: To delve or not to delve (technollama.co.uk/to-delve-or-not-to-delve-ai-detection-made-easy)
-- Originality.ai: GPTZero Review (originality.ai/blog/gptzero-ai-content-detection-review)
-- Hastewire: AI Detection Benchmark 2025 (hastewire.com/blog/ai-detection-benchmark-2025-top-accuracy-results)
+- Wikipedia: Signs of AI Writing (August 2025)
+- WikiProject AI Cleanup
+- Studien zur AI-Vokabular-Haeufigkeit (2023-2025)
+- Nieman Storyboard: Nut Grafs (2021)
+- Poynter: The Nut Graf (2003)
+- Plagiarism Today: Em Dashes and AI Writing (2025)
+- The Conversation: Spotting AI Text (2025)
+- British Academy Book Prize Jury-Kriterien (2025)
+- Panko, R.: Spreadsheet Errors (2008)
+- Edutopia: Humor Boosts Retention (neurowissenschaftliche Basis)
+- Praxis-Feedback: Stilistische KI-Analyse eines ESG-Fachartikels (Maerz 2026), identifizierte sechs Erkennungsmuster: symmetrische Argumentationsboegen, gleichmaessige Absatzlaengen, dramatische Uebergangsphrasen, plausible Zahlen ohne Quellen, Credibility-Wrapper, breite Generalisten-Perspektive
+- hardikpandya/stop-slop (GitHub, MIT-Lizenz, 2025)
